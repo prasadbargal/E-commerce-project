@@ -1,5 +1,4 @@
-
-import React from 'react'
+import React, { useState } from 'react'
 import './Home.css';
 import Producthome from './Producthome';
 import banner from './homeimages1/homebanner.jpg';
@@ -20,55 +19,98 @@ import home11 from './homeimages1/trend7.jpg';
 import home12 from './homeimages1/trend8.jpg';
 import home13 from './homeimages1/trend9.jpg';
 
+const VISIBLE_SLIDES = 7; // 3 left + center + 3 right
 
 const Home = () => {
+    const trendingImages = [
+        home1, home2, home3, home4, home5, home6, home7, home8, home9, home10, home11, home12, home13
+    ];
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    const prevSlide = () => {
+        setCurrentIndex((prevIndex) =>
+            (prevIndex - 1 + trendingImages.length) % trendingImages.length
+        );
+    };
+
+    const nextSlide = () => {
+        setCurrentIndex((prevIndex) =>
+            (prevIndex + 1) % trendingImages.length
+        );
+    };
+
+    // Calculate the indices of visible slides centered around currentIndex
+    const getVisibleIndices = () => {
+        const indices = [];
+        const half = Math.floor(VISIBLE_SLIDES / 2);
+        for (let i = -half; i <= half; i++) {
+            indices.push((currentIndex + i + trendingImages.length) % trendingImages.length);
+        }
+        return indices;
+    };
+
+    const visibleIndices = getVisibleIndices();
+
     return (
         <div>
             <div className="bannerimg">
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src={banner1} class="d-block w-100" alt="..." />
+                <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <img src={banner1} className="d-block w-100" alt="..." />
                         </div>
-                        <div class="carousel-item">
-                            <img src={banner2} class="d-block w-100" alt="..." />
+                        <div className="carousel-item">
+                            <img src={banner2} className="d-block w-100" alt="..." />
                         </div>
-                        <div class="carousel-item">
-                            <img src={banner} class="d-block w-100" alt="..." />
+                        <div className="carousel-item">
+                            <img src={banner} className="d-block w-100" alt="..." />
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
+                    <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Previous</span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
+                    <button className="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Next</span>
                     </button>
                 </div>
             </div>
             <div className="trendindimages">
                 <h1>Trending 2025</h1>
-                <div className='imagess'>
-                    <img src={home1} alt="" />
-                    <img src={home2} alt="" />
-                    <img src={home3} alt="" />
-                    <img src={home4} alt="" />
-                    <img src={home5} alt="" />
-                    <img src={home6} alt="" />
-                    <img src={home7} alt="" />
-                    <img src={home8} alt="" />
-                    <img src={home9} alt="" />
-                    <img src={home10} alt="" />
-                    <img src={home11} alt="" />
-                    <img src={home12} alt="" />
-                    <img src={home13} alt="" />
+                <div className="carousel-container">
+                    <button className="carousel-arrow left-arrow" onClick={prevSlide} aria-label="Previous Slide">&#10094;</button>
+                    <div className="imagess">
+                        {visibleIndices.map((index) => {
+                            let className = "carousel-image inactive";
+                            if (index === currentIndex) {
+                                className = "carousel-image active";
+                            } else if (
+                                (index + trendingImages.length) % trendingImages.length === (currentIndex - 1 + trendingImages.length) % trendingImages.length ||
+                                (index + trendingImages.length) % trendingImages.length === (currentIndex + 1) % trendingImages.length ||
+                                (index + trendingImages.length) % trendingImages.length === (currentIndex - 2 + trendingImages.length) % trendingImages.length ||
+                                (index + trendingImages.length) % trendingImages.length === (currentIndex + 2) % trendingImages.length ||
+                                (index + trendingImages.length) % trendingImages.length === (currentIndex - 3 + trendingImages.length) % trendingImages.length ||
+                                (index + trendingImages.length) % trendingImages.length === (currentIndex + 3) % trendingImages.length
+                            ) {
+                                className = "carousel-image side";
+                            }
+                            return (
+                                <img
+                                    key={index}
+                                    src={trendingImages[index]}
+                                    alt={`Trending ${index + 1}`}
+                                    className={className}
+                                />
+                            );
+                        })}
+                    </div>
+                    <button className="carousel-arrow right-arrow" onClick={nextSlide} aria-label="Next Slide">&#10095;</button>
                 </div>
             </div>
             <Producthome />
-            
         </div>
-
     )
 }
 
