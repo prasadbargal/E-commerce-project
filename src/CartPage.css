@@ -78,19 +78,28 @@
   align-items: center;
   gap: 10px;
   margin-top: 10px;
+  background-color: #f5f5f5;
+  padding: 6px 12px;
+  border-radius: 8px;
+  width: fit-content;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .qty-control button {
-  width: 32px;
-  height: 32px;
-  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  font-size: 22px;
   font-weight: bold;
   background-color: #2980b9;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .qty-control button:hover {
@@ -98,11 +107,12 @@
 }
 
 .qty-control span {
-  min-width: 28px;
+  min-width: 32px;
   text-align: center;
-  font-weight: 600;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1.2rem;
   color: #222;
+  user-select: none;
 }
 
 /* Cart summary */

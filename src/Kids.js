@@ -2,6 +2,7 @@
 
 import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
+import { useWishlist } from './WishlistContext';
 import './Producthome.css'; 
 import kidimg1 from './kidimages/img3.jpg';
 import kidimg2 from './kidimages/img4.webp';
@@ -132,17 +133,37 @@ const kidsProducts = [
 const Kids = () => {
   
   const { addToCart } = useContext(CartContext);
- const handleAdd = (product) => {
+  const { addToWishlist, wishlistItems } = useWishlist();
+
+  const handleAdd = (product) => {
     addToCart(product);
     alert(`Item from ${product.brand} added to cart!`);
+  };
+
+  const isInWishlist = (productId) => {
+    return wishlistItems.some(item => item.id === productId);
   };
 
   return (
     <div className="products-cards">
       {kidsProducts.map((product) => (
-        <div className="product-card" key={product.id}>
+        <div className="product-card" key={product.id} style={{ position: 'relative' }}>
           <img src={product.imgSrc} alt={product.brand} className="product-image" />
-
+          <div
+            onClick={() => addToWishlist(product)}
+            style={{
+              position: 'absolute',
+              bottom: '8px',
+              right: '8px',
+              cursor: 'pointer',
+              fontSize: '24px',
+              color: isInWishlist(product.id) ? 'red' : 'gray',
+              userSelect: 'none',
+            }}
+            title={isInWishlist(product.id) ? 'Added to Wishlist' : 'Add to Wishlist'}
+          >
+            ♥
+          </div>
           <div className="product-info">
             <p className="tag">{product.tag}</p>
             <h2 className="brand">{product.brand}</h2>
@@ -168,3 +189,4 @@ const Kids = () => {
 };
 
 export default Kids;
+

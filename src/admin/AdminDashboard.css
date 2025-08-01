@@ -1,0 +1,264 @@
+.admin-dashboard {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f9faff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 50, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.admin-dashboard h1 {
+  color: #003d99;
+  font-weight: 900;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.form-section, .cards-section {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 61, 153, 0.1);
+}
+
+.form-section h2, .cards-section h2 {
+  color: #0052cc;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #003d99;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group textarea,
+.form-group input[type="file"] {
+  padding: 10px 12px;
+  border: 2px solid #0052cc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus,
+.form-group textarea:focus,
+.form-group input[type="file"]:focus {
+  border-color: #003d99;
+  box-shadow: 0 0 8px rgba(0, 61, 153, 0.5);
+  outline: none;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.image-path {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #0052cc, #003d99);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 61, 153, 0.4);
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #003d99, #002966);
+  box-shadow: 0 6px 16px rgba(0, 45, 120, 0.6);
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 61, 153, 0.1);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 8px 24px rgba(0, 61, 153, 0.3);
+}
+
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card h3 {
+  margin: 0;
+  color: #003d99;
+  font-weight: 700;
+}
+
+.card p {
+  margin: 0;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.card .price {
+  font-weight: 700;
+  color: #0052cc;
+}
+
+.card .tag {
+  font-style: italic;
+  color: #777;
+}
+
+.card .link {
+  color: #0073e6;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.card-actions button {
+  flex: 1;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.card-actions button:hover {
+  filter: brightness(0.9);
+}
+
+.card-actions button:nth-child(1) {
+  background-color: #0052cc;
+  color: white;
+}
+
+.card-actions button:nth-child(2) {
+  background-color: #cc0000;
+  color: white;
+}
+
+.card-actions button:nth-child(3) {
+  background-color: #777;
+  color: white;
+}
+
+.card-actions button:nth-child(4) {
+  background-color: #0073e6;
+  color: white;
+}
+
+.hidden {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.preview-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.preview-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.preview-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.preview-content h3 {
+  margin-bottom: 10px;
+  color: #003d99;
+}
+
+.preview-content p {
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.preview-content button {
+  background: linear-gradient(135deg, #0052cc, #003d99);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.preview-content button:hover {
+  background: linear-gradient(135deg, #003d99, #002966);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .admin-dashboard {
+    max-width: 95%;
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}

@@ -1,0 +1,271 @@
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-icon-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: 280px;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  z-index: 1000;
+  font-family: Arial, sans-serif;
+  color: #333;
+  padding: 16px;
+}
+
+.welcome-message {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 4px;
+}
+
+.welcome-submessage {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.login-signup-button {
+  width: 100%;
+  background: white;
+  border: 1px solid #ff3f6c;
+  color: #ff3f6c;
+  font-weight: 700;
+  padding: 10px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.login-signup-button:hover {
+  background-color: #ff3f6c;
+  color: white;
+}
+
+.profile-dropdown-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-dropdown-list li {
+  margin: 8px 0;
+}
+
+.dropdown-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdown-link:hover {
+  color: #ff3f6c;
+  text-decoration: underline;
+}
+
+.new-label {
+  background-color: #ff3f6c;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 12px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #eee;
+  margin: 12px 0;
+}
+
+.wishlist-container {
+  padding: 20px;
+}
+
+.wishlist-items {
+  list-style-type: none;
+  padding: 0;
+}
+
+.wishlist-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.wishlist-item-image {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.wishlist-item-details {
+  flex-grow: 1;
+}
+
+.wishlist-item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.empty-wishlist {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.vpa-info-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+h1, h2 {
+  color: #333;
+}
+ul, ol {
+  margin-left: 20px;
+}
+li {
+  margin-bottom: 10px;
+}
+.empty-wishlist {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Coupons Page Styles */
+
+/* Coupons Page */
+.coupons-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Hero Banner */
+.hero-banner {
+  background-image: linear-gradient(to right, #4b6cb7, #182848);
+  color: white;
+  padding: 60px 30px;
+  text-align: center;
+  border-radius: 8px;
+  margin-bottom: 40px;
+}
+
+.hero-banner h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero-banner p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Active Coupons Section */
+.active-coupons {
+  margin-bottom: 30px;
+}
+
+.coupon {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 15px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.coupon-code {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.coupon-details {
+  flex-grow: 1;
+  margin-left: 20px;
+}
+
+.coupon-details p {
+  margin: 5px 0;
+}
+
+.coupon button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.coupon button:hover {
+  background: #2980b9;
+}
+
+/* How to Find Promotions Section */
+.how-to-find-promotions {
+  margin-bottom: 30px;
+}
+
+.how-to-find-promotions form {
+  display: flex;
+  gap: 10px;
+}
+
+.how-to-find-promotions input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.how-to-find-promotions button {
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.how-to-find-promotions button:hover {
+  background: #2980b9;
+}
+
+/* General Promotion Info Section */
+.general-promotion-info {
+  margin-bottom: 30px;
+}
+
+/* Disclaimers Section */
+.disclaimers {
+  margin-bottom: 30px;
+}
+
+.disclaimers ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}

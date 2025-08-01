@@ -1,0 +1,106 @@
+import React, { useState, useRef, useEffect } from 'react';
+import './Profile.css';
+import LogSign from './LogSign';
+import { FaUserCircle } from 'react-icons/fa'; // Fixed import for FaUser Circle
+import SavedCards from './SavedCards';
+import SaveCart from './SaveCart';
+import BbrandInsider from './BbrandInsider'; // Import the BbrandInsider component
+import { Link } from 'react-router-dom'; // Import Link for navigation
+
+const Profile = ({ userId }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLogSignOpen, setIsLogSignOpen] = useState(false);
+  const [logSignMode, setLogSignMode] = useState('login'); // 'login' or 'signup'
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const openLogSign = (mode) => {
+    setLogSignMode(mode);
+    setIsLogSignOpen(true);
+    setIsOpen(false);
+  };
+
+  const closeLogSign = () => {
+    setIsLogSignOpen(false);
+  };
+
+  const handleLogout = () => {
+    // Clear user session or token here
+    setIsLoggedIn(false);
+    setIsOpen(false);
+  };
+
+  // Close dropdown if clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        !event.target.closest('.logsign-modal')
+      ) {
+        setIsOpen(false);
+        setIsLogSignOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  return (
+    <div className="profile-container" ref={dropdownRef}>
+      <button className="profile-icon-button" onClick={toggleDropdown} aria-label="Profile">
+        <FaUser Circle size={32} />
+      </button>
+      {isOpen && !isLoggedIn && (
+        <div className="profile-dropdown">
+          <p className="welcome-message">Welcome</p>
+          <p className="welcome-submessage">To access account and manage orders</p>
+          <button className="login-signup-button" onClick={() => openLogSign('login')}>
+            LOGIN / SIGNUP
+          </button>
+          <ul className="profile-dropdown-list">
+            <li><a href="/orders" className="dropdown-link">Orders</a></li>
+            <li><a href="/wishlist" className="dropdown-link">Wishlist</a></li>
+            <li><a href="/giftcards" className="dropdown-link">Gift Cards</a></li>
+            <li className="dropdown-link"><Link className="dropdown-link" to="/profile/ContactUs">Contact Us</Link></li>
+            <li><BbrandInsider userId={userId} /></li> {/* Added BbrandInsider link */}
+            <li><a href="/myntracredit" className="dropdown-link">Myntra Credit</a></li>
+            <li><a href="/coupons" className="dropdown-link">Coupons</a></li>
+            <li><a href="/savedcards" className="dropdown-link">Saved Cards</a></li>
+            <li><a href="/savedvpa" className="dropdown-link">Saved VPA</a></li>
+            <li><a href="/savedaddresses" className="dropdown-link">Saved Addresses</a></li>
+          </ul>
+        </div>
+      )}
+      {isLogSignOpen && (
+        <div className="logsign-modal">
+          <LogSign
+            mode={logSignMode}
+            onLogin={() => {
+              setIsLoggedIn(true);
+              closeLogSign();
+            }}
+          />
+        </div>
+      )}
+      {isLoggedIn && (
+        <div>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
+          <h1>User Profile</h1>
+          <SavedCards userId={userId} />
+          <SaveCart userId={userId} />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default Profile;

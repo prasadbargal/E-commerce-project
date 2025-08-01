@@ -2,13 +2,16 @@
 import React, { useContext } from 'react';
 import './CartPage.css';
 import { CartContext } from './CartContext';
+import { useWishlist } from './WishlistContext';
+import { useNavigate } from 'react-router-dom';
 
 const CartPage = () => {
   const { cartItems, removeFromCart, clearCart, increaseQty, decreaseQty } = useContext(CartContext);
+  const { addToWishlist, wishlistItems } = useWishlist();
+  const navigate = useNavigate();
 
   const handleOrder = () => {
-    alert('Order placed successfully!');
-    clearCart();
+    navigate('/placeorder');
   };
 
   // ✅ Fix NaN issue in total price calculation
@@ -23,6 +26,10 @@ const CartPage = () => {
     return acc + price * quantity;
   }, 0);
 
+  const isInWishlist = (itemId) => {
+    return wishlistItems.some(item => item.id === itemId);
+  };
+
   return (
     <div className="cart-page">
       <h2>Your Cart</h2>
@@ -31,8 +38,23 @@ const CartPage = () => {
       ) : (
         <div>
           {cartItems.map((item) => (
-            <div key={item.id} className="cart-item">
+            <div key={item.id} className="cart-item" style={{ position: 'relative' }}>
               <img src={item.imgSrc} alt={item.brand} />
+              <div
+                onClick={() => addToWishlist(item)}
+                style={{
+                  position: 'absolute',
+                  bottom: '8px',
+                  right: '8px',
+                  cursor: 'pointer',
+                  fontSize: '24px',
+                  color: isInWishlist(item.id) ? 'red' : 'gray',
+                  userSelect: 'none',
+                }}
+                title={isInWishlist(item.id) ? 'Added to Wishlist' : 'Add to Wishlist'}
+              >
+                ♥
+              </div>
               <div>
                 <h4>{item.brand}</h4>
                 <p>{item.tag}</p>
