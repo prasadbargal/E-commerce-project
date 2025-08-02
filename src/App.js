@@ -38,8 +38,11 @@ import CardForm from './payment/CardForm';
 import PaymentApp from './payment/PaymentApp';
 import AdminDashboard from './admin/AdminDashboard';
 import AddressProvider from './AddressContext';
+<<<<<<< HEAD
 
 import CartProvider from './CartContext';
+=======
+>>>>>>> c4298b9e49e93a06fbbc09dac8a39cc6656a1a51
 
 function App() {
   return (
@@ -63,7 +66,10 @@ function App() {
               {/* 👤 Profile and Auth-Related Routes */}
               <Route path="/profile" element={<Profile />} />
               <Route path="/logsign" element={<LogSign />} />
+<<<<<<< HEAD
               <Route path="/coupons" element={<CouponsPage />} />
+=======
+>>>>>>> c4298b9e49e93a06fbbc09dac8a39cc6656a1a51
 
               {/* 📦 Account Features */}
               <Route path="/orders" element={<Orders />} />
