@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { CartContext } from './CartContext';
-import { FaBagShopping } from "react-icons/fa6"; // or FaShoppingBag
+import { FaBagShopping } from "react-icons/fa6"; // removed FaUser import
 import { Link, useNavigate } from 'react-router-dom';
+import Profile from './profile/Profile'; // import Profile component
 
 const Navbar = () => {
   const { cartItems } = useContext(CartContext);
@@ -15,17 +16,18 @@ const Navbar = () => {
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     if (searchTerm.trim() !== '') {
-      // Navigate to search results page or relevant page
       navigate(`/search/${encodeURIComponent(searchTerm.trim())}`);
       setSearchTerm('');
     }
   };
 
+  // Placeholder userId, replace with actual user ID or context as needed
+  const userId = null;
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark" style={{ position: 'relative' }}>
       <div className="container-fluid">
         <Link className="navbar-brand d-flex align-items-center" to="/">
-          {/* Simple text-based logo */}
           <span style={{ fontWeight: 'bold', fontSize: '1.5rem', color: 'white' }}>BBRAND</span>
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -39,6 +41,7 @@ const Navbar = () => {
             <li className="nav-item"><Link className="nav-link" to="/men">Men</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/women">Women</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/kids">Kids</Link></li>
+            <li className="nav-item"><Link className="nav-link" to="/categories">Categories</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/about">About</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/service">Service</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/contact">Contact</Link></li>
@@ -67,6 +70,9 @@ const Navbar = () => {
               fontSize: '12px'
             }}>{cartItems.length}</span>
           </Link>
+          <div className="profile-icon ms-3 relative text-white cursor-pointer">
+            <Profile userId={userId} />
+          </div>
         </div>
       </div>
     </nav>

@@ -1,0 +1,150 @@
+.product-details-container {
+  display: flex;
+  max-width: 900px;
+  margin: 40px auto;
+  gap: 24px;
+  font-family: Arial, sans-serif;
+}
+
+.image-gallery {
+  flex: 1;
+}
+
+.main-image img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.thumbnail-list {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  overflow-x: auto;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  border-radius: 4px;
+  cursor: pointer;
+  object-fit: cover;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.thumbnail.selected {
+  border-color: #ff3f6c;
+}
+
+.product-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-info h2 {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.product-info h3 {
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 12px;
+}
+
+.rating {
+  display: flex;
+  gap: 8px;
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.price {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.current-price {
+  font-weight: 700;
+  margin-right: 12px;
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 12px;
+}
+
+.discount {
+  color: #ff3f6c;
+  font-weight: 700;
+}
+
+.size-selector p {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.sizes {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.size {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.size.selected {
+  background-color: #ff3f6c;
+  color: white;
+  border-color: #ff3f6c;
+}
+
+.add-to-bag {
+  background-color: #a67c00;
+  color: white;
+  font-weight: 700;
+  padding: 12px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-bag:hover {
+  background-color: #7a5a00;
+}
+
+.product-details-toggle {
+  background: none;
+  border: 1px solid #a67c00;
+  color: #a67c00;
+  font-weight: 700;
+  padding: 10px 0;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.product-details-toggle:hover {
+  background-color: #a67c00;
+  color: white;
+}
+
+.product-description {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+}

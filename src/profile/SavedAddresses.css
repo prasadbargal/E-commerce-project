@@ -1,0 +1,44 @@
+.saved-addresses-container {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+}
+
+.saved-addresses-container h2 {
+  text-align: center;
+}
+
+.saved-addresses-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.saved-addresses-container input {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.saved-addresses-container button {
+  margin: 5px 0;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.saved-addresses-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.saved-addresses-container li {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}

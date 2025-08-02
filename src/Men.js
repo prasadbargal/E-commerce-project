@@ -1,6 +1,7 @@
 
 import React, { useContext } from 'react';
 import { CartContext } from './CartContext';
+import { useWishlist } from './WishlistContext';
 import './Producthome.css'; 
 import menimges1  from './menproductimages/menimage1.jpg';
 import menimges2  from './menproductimages/menimage2.jpg';
@@ -71,7 +72,7 @@ const menProducts = [
     ratingCount: 10200,
   },
    {
-    id: 'm7',
+    id: 'm6',
     imgSrc: menimges6,
     tag: '# Slim Fit Shirt',
     brand: 'LEVIS',
@@ -131,18 +132,37 @@ const menProducts = [
 
 const Men = () => {
     const { addToCart } = useContext(CartContext);
+    const { addToWishlist, wishlistItems } = useWishlist();
 
   const handleAdd = (product) => {
     addToCart(product);
     alert(`Item from ${product.brand} added to cart!`);
   };
 
+  const isInWishlist = (productId) => {
+    return wishlistItems.some(item => item.id === productId);
+  };
+
   return (
     <div className="products-cards">
       {menProducts.map((product) => (
-        <div className="product-card" key={product.id}>
+        <div className="product-card" key={product.id} style={{ position: 'relative' }}>
           <img src={product.imgSrc} alt={product.brand} className="product-image" />
-
+          <div
+            onClick={() => addToWishlist(product)}
+            style={{
+              position: 'absolute',
+              bottom: '8px',
+              right: '8px',
+              cursor: 'pointer',
+              fontSize: '24px',
+              color: isInWishlist(product.id) ? 'red' : 'gray',
+              userSelect: 'none',
+            }}
+            title={isInWishlist(product.id) ? 'Added to Wishlist' : 'Add to Wishlist'}
+          >
+            ♥
+          </div>
           <div className="product-info">
             <p className="tag">{product.tag}</p>
             <h2 className="brand">{product.brand}</h2>
@@ -168,3 +188,4 @@ const Men = () => {
 };
 
 export default Men;
+
