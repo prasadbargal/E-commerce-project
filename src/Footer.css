@@ -1,60 +1,144 @@
-
-footer {
-  background-color: #f8f9fa;
-  color: #212529;
+.footer-container {
+  background-color: #2f4050;
+  color: #d1d9e6;
   font-family: Arial, sans-serif;
+  padding: 40px 20px 60px 20px;
+  position: relative;
 }
 
-footer h5 {
-  font-weight: 600;
-  margin-bottom: 15px;
+.footer-top-icons {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #4a5a6a;
 }
 
-footer p,
-footer ul {
+.footer-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
   font-size: 14px;
+  text-transform: uppercase;
+  color: #f0f0f0;
 }
 
-footer ul {
-  padding-left: 0;
-  list-style-type: none;
+.footer-icon-item svg {
+  margin-bottom: 10px;
+  color: #f0f0f0;
 }
 
-footer ul li {
+.footer-links-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-column {
+  flex: 1;
+  margin: 0 15px;
+}
+
+.footer-column h4 {
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #f0f0f0;
+}
+
+.footer-column ul {
+  list-style: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.footer-column ul li {
   margin-bottom: 8px;
+  cursor: pointer;
 }
 
-footer ul li a {
-  text-decoration: none;
-  transition: color 0.3s;
-}
-
-footer ul li a:hover {
-  color: #007bff;
+.footer-column ul li a {
+  color: #d1d9e6;
   text-decoration: underline;
 }
 
-footer a {
-  color: #212529;
+.footer-column ul li a:hover {
+  color: #ffffff;
 }
 
-footer a:hover {
-  color: #007bff;
+.footer-bottom-section {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid #4a5a6a;
+  padding-top: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-size: 14px;
 }
 
-footer .social-icons a {
-  margin-right: 15px;
-  font-size: 20px;
-  transition: color 0.3s;
+.payment-methods, .secure-systems {
+  display: flex;
+  flex-direction: column;
+  color: #d1d9e6;
 }
 
-footer .social-icons a:hover {
-  color: #007bff;
+.payment-methods p, .secure-systems p {
+  margin-bottom: 10px;
+  font-weight: 500;
 }
 
-footer .text-center {
-  font-size: 13px;
-  border-top: 1px solid #dee2e6;
-  padding-top: 10px;
-  margin-top: 15px;
+.payment-icons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.payment-icons img {
+  height: 30px;
+  object-fit: contain;
+}
+
+.payment-icons span {
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.security-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.security-icons img {
+  height: 50px;
+  object-fit: contain;
+}
+
+.security-icons span {
+  font-weight: bold;
+}
+
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background-color: #2f4050;
+  border: 2px solid #d1d9e6;
+  border-radius: 50%;
+  color: #d1d9e6;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  background-color: #4a5a6a;
+  color: #ffffff;
 }

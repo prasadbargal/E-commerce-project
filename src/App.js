@@ -1,10 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
-=======
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
->>>>>>> d2c2be8163608ae4f5b9380539f45ff0c38e5d0d
 import Navbar from './Navbar';
 import Footer from './Footer';
 
@@ -48,7 +43,6 @@ import CartProvider from './CartContext';
 
 function App() {
   return (
-<<<<<<< HEAD
     <WishlistProvider>
       <CartProvider>
         <AddressProvider>
@@ -98,26 +92,6 @@ function App() {
         </AddressProvider>
       </CartProvider>
     </WishlistProvider>
-=======
-    <CartProvider>
-      <Router>
-        <Navbar />
-
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/men" element={<Men />} />
-          <Route path="/women" element={<Women />} />
-          <Route path="/kids" element={<Kids />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/service" element={<Service />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/cart" element={<CartPage />} />
-        </Routes>
-
-        <Footer />
-      </Router>
-    </CartProvider>
->>>>>>> d2c2be8163608ae4f5b9380539f45ff0c38e5d0d
   );
 }
 

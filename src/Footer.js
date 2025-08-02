@@ -1,46 +1,110 @@
-
-
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaFacebook, FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
+import { FaExchangeAlt, FaHandHoldingHeart, FaCheckCircle, FaFacebook, FaTwitter, FaPinterest } from 'react-icons/fa';
+import { AiOutlineHeart, AiOutlineArrowUp } from 'react-icons/ai';
 import './Footer.css';
 
-
 const Footer = () => {
-  return (
-    <footer className="bg-light text-dark pt-4 mt-5 border-top">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-4 mb-3">
-            <h5>About Us</h5>
-            <p style={{ fontSize: '14px' }}>
-              We are a leading fashion and lifestyle store offering trendy clothing for Men, Women, and Kids.
-            </p>
-          </div>
-          <div className="col-md-4 mb-3">
-            <h5>Quick Links</h5>
-            <ul className="list-unstyled">
-              <li><Link to="/men" className="text-dark">Men</Link></li>
-              <li><Link to="/women" className="text-dark">Women</Link></li>
-              <li><Link to="/kids" className="text-dark">Kids</Link></li>
-              <li><Link to="/contact" className="text-dark">Contact</Link></li>
-            </ul>
-          </div>
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-          <div className="col-md-4 mb-3">
-            <h5>Follow Us</h5>
-            <div style={{ fontSize: '20px' }}>
-              <a href="https://facebook.com" className="text-dark me-3"><FaFacebook /></a>
-              <a href="https://instagram.com" className="text-dark me-3"><FaInstagram /></a>
-              <a href="https://whatapp.com" className="text-dark me-3"><FaWhatsapp /></a>
-              <a href="https://youtube.com" className="text-dark"><FaYoutube /></a>
-            </div>
-          </div>
+  return (
+    <footer className="footer-container">
+      {/* Top icon section */}
+      <div className="footer-top-icons">
+        <div className="footer-icon-item">
+          <FaExchangeAlt size={40} />
+          <p>EASY EXCHANGE</p>
         </div>
-        <div className="text-center py-3 border-top mt-3" style={{ fontSize: '14px' }}>
-          © {new Date().getFullYear()} YourStoreName. All Rights Reserved.
+        <div className="footer-icon-item">
+          <FaHandHoldingHeart size={40} />
+          <p>100% HANDPICKED</p>
+        </div>
+        <div className="footer-icon-item">
+          <FaCheckCircle size={40} />
+          <p>ASSURED QUALITY</p>
         </div>
       </div>
+
+      {/* Middle links section */}
+      <div className="footer-links-section">
+        <div className="footer-column">
+          <h4>Ajio</h4>
+          <ul>
+            <li>Who We Are</li>
+            <li>Join Our Team</li>
+            <li>Terms & Conditions</li>
+            <li>We Respect Your Privacy</li>
+            <li>Fees & Payments</li>
+            <li>Returns & Refunds Policy</li>
+            <li>Promotions Terms & Conditions</li>
+            <li>Blog</li>
+          </ul>
+        </div>
+        <div className="footer-column">
+          <h4>Help</h4>
+          <ul>
+            <li><a href="#">Track Your Order</a></li>
+            <li>Frequently Asked Questions</li>
+            <li>Returns</li>
+            <li>Cancellations</li>
+            <li>Payments</li>
+            <li>Customer Care</li>
+            <li>How Do I Redeem My Coupon</li>
+          </ul>
+        </div>
+        <div className="footer-column">
+          <h4>Shop by</h4>
+          <ul>
+            <li><Link to="/categories">All</Link></li>
+            <li><Link to="/men">Men</Link></li>
+            <li><Link to="/women">Women</Link></li>
+            <li><Link to="/kids">Kids</Link></li>
+            <li>Indie</li>
+            <li>Stores</li>
+            <li>New Arrivals</li>
+            <li>Brand Directory</li>
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/categories">Collections</Link></li>
+          </ul>
+        </div>
+        <div className="footer-column">
+          <h4>Follow us</h4>
+          <ul>
+            <li>Facebook</li>
+            <li>Instagram- BBRANDLife</li>
+            <li>Instagram- BBRAND LUXE</li>
+            <li>Twitter</li>
+            <li>Pinterest</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Bottom payment and security section */}
+      <div className="footer-bottom-section">
+        <div className="payment-methods">
+          <p>Payment methods</p>
+          <div className="payment-icons">
+            <img src="/netbanking.png" alt="Net Banking" />
+            <img src="/VerifiedbyVisa.png" alt="Verified by Visa" />
+            <img src="/MasterCard.png" alt="MasterCard" />
+            <img src="/cashondelivery.png" alt="cashondelivery" />
+            <img src="/jiomoney.png" alt="jio money" />
+          </div>
+        </div>
+        <div className="secure-systems">
+          <p>Secure systems</p>
+          <div className="security-icons">
+            <img src="/256bitencription.png" alt="SSL" />
+          </div>
+        </div>
+      </div>
+
+      {/* Back to top button */}
+      <button className="back-to-top" onClick={scrollToTop} aria-label="Back to top">
+        <AiOutlineArrowUp size={24} />
+      </button>
     </footer>
   );
 };

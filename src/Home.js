@@ -1,11 +1,10 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import './Home.css';
 import Producthome from './Producthome';
+import CustomCarousel from './CustomCarousel';
 import banner from './homeimages1/homebanner.jpg';
 import banner1 from './homeimages1/banner1.jpg';
 import banner2 from './homeimages1/banner4.jpg';
-import banner3 from './homeimages1/banner5.jpg'; // Note: banner3 is imported but not used, consider removing if unnecessary
 import home1 from './homeimages1/men-1.webp';
 import home2 from './homeimages1/trend9.jpg';
 import home3 from './homeimages1/trend9.jpg';
@@ -19,6 +18,10 @@ import home10 from './homeimages1/trend7.jpeg';
 import home11 from './homeimages1/trend7.jpg';
 import home12 from './homeimages1/trend8.jpg';
 import home13 from './homeimages1/trend9.jpg';
+
+import men_fashion from './homeimages1/men fashion.jpg'
+import women_fashion from './homeimages1/women fashion.webp'
+import kids_fashion from './homeimages1/kids fashion.webp'
 
 const images = [home1, home2, home3, home4, home5, home6, home7, home8, home9, home10, home11, home12, home13];
 
@@ -75,20 +78,11 @@ const ImageGallery = () => {
     </div>
   );
 };
-=======
-import React from 'react';
-import './Home.css';
-import Producthome from './Producthome';
-
-import men_fashion from './homeimages1/men fashion.jpg'
-import women_fashion from './homeimages1/women fashion.webp'
-import kids_fashion from './homeimages1/kids fashion.webp'
->>>>>>> d2c2be8163608ae4f5b9380539f45ff0c38e5d0d
 
 const Home = () => {
   return (
     <div>
-<<<<<<< HEAD
+      <CustomCarousel />
       <div className="bannerimg">
         <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
           <div className="carousel-inner">
@@ -110,8 +104,10 @@ const Home = () => {
             <span className="carousel-control-next-icon" aria-hidden="true"></span>
             <span className="visually-hidden">Next</span>
           </button>
-=======
-      {/* Hero Section */}
+        </div>
+      </div>
+
+      {/* Hero Section */}      
       <section className="hero" id="home">
         <div className="hero-content">
           <h1 className="fade-in">Elevate Your Style</h1>
@@ -130,20 +126,7 @@ const Home = () => {
         <div className="section-title">
           <h2>Our Collections</h2>
           <p>Shop by category</p>
->>>>>>> d2c2be8163608ae4f5b9380539f45ff0c38e5d0d
         </div>
-      </div>
-      <div className="trendindimages">
-        <h1>Trending 2025</h1>
-        <ImageGallery />
-      </div>
-      <Producthome />
-    </div>
-  );
-};
-
-<<<<<<< HEAD
-=======
         <div className="category-grid">
           {/* Men's Fashion */}
           <div className="category-card fade-in">
@@ -167,7 +150,7 @@ const Home = () => {
             />
             <div className="category-content">
               <h3>Women's Fashion</h3>
-              <a href="Women.js" className="btn btn-primary">Shop Now</a>
+              <a href="#women" className="btn btn-primary">Shop Now</a>
             </div>
           </div>
 
@@ -186,11 +169,16 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Trending Images Section */}
+      <div className="trendingimages">
+        <h1>Trending 2025</h1>
+        <ImageGallery />
+      </div>
+
       {/* Product Section */}
       <Producthome />
     </div>
   );
 };
 
->>>>>>> d2c2be8163608ae4f5b9380539f45ff0c38e5d0d
 export default Home;

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import ReactDOM from 'react-dom';
 import './Profile.css';
 import { FaUser } from 'react-icons/fa';
 import SavedCards from './SavedCards';
@@ -8,6 +9,7 @@ const Profile = ({ userId }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const dropdownRef = useRef(null);
+  const portalDropdownRef = useRef(null);
   const navigate = useNavigate(); // ✅ Import navigate hook
 
   const toggleDropdown = () => {
@@ -23,7 +25,9 @@ const Profile = ({ userId }) => {
     const handleClickOutside = (event) => {
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
+        !dropdownRef.current.contains(event.target) &&
+        portalDropdownRef.current &&
+        !portalDropdownRef.current.contains(event.target)
       ) {
         setIsOpen(false);
       }
@@ -40,8 +44,8 @@ const Profile = ({ userId }) => {
         <FaUser size={32} />
       </button>
 
-      {isOpen && !isLoggedIn && (
-        <div className="profile-dropdown">
+      {isOpen && !isLoggedIn && ReactDOM.createPortal(
+        <div ref={portalDropdownRef} className="profile-dropdown" style={{ position: 'absolute', top: '40px', right: '0', width: '280px', background: 'white', border: '1px solid #ddd', boxShadow: '0 4px 12px rgba(0,0,0,0.1)', borderRadius: '8px', zIndex: 9999, fontFamily: 'Arial, sans-serif', color: '#333', padding: '16px' }}>
           <p className="welcome-message">Welcome</p>
           <p className="welcome-submessage">To access account and manage orders</p>
           {/* ✅ Updated button to use navigate */}
@@ -63,7 +67,8 @@ const Profile = ({ userId }) => {
             <li><Link to="/brandcredit" className="dropdown-link">Bbrand Credit</Link></li>
             <li><Link to="/admin" className="dropdown-link">Admin Dashboard</Link></li>
           </ul>
-        </div>
+        </div>,
+        document.body
       )}
 
       {isLoggedIn && (
