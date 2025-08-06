@@ -1,10 +1,6 @@
 .profile-container {
   position: relative;
   display: inline-block;
-<<<<<<< HEAD
-  z-index: 9999;
-=======
->>>>>>> c4298b9e49e93a06fbbc09dac8a39cc6656a1a51
 }
 
 .profile-icon-button {
@@ -23,43 +19,12 @@
   border: 1px solid #ddd;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   border-radius: 8px;
-<<<<<<< HEAD
-  z-index: 9999;
-=======
-  z-index: 1000;
->>>>>>> c4298b9e49e93a06fbbc09dac8a39cc6656a1a51
+  z-index: 3000; /* Increased z-index to bring profile dropdown in front */
   font-family: Arial, sans-serif;
   color: #333;
   padding: 16px;
 }
 
-<<<<<<< HEAD
-/* Responsive profile dropdown for all screen sizes */
-@media screen and (min-width: 320px) and (max-width: 2560px) {
-  .profile-dropdown {
-    right: 0 !important;
-    left: auto !important;
-  }
-}
-
-/* Responsive profile dropdown for mobile */
-@media (max-width: 768px) {
-  .profile-dropdown {
-    width: 250px;
-    right: -10px;
-  }
-  
-  .profile-dropdown-list li {
-    margin: 6px 0;
-  }
-  
-  .dropdown-link {
-    font-size: 13px;
-  }
-}
-
-=======
->>>>>>> c4298b9e49e93a06fbbc09dac8a39cc6656a1a51
 .welcome-message {
   font-weight: 700;
   font-size: 18px;

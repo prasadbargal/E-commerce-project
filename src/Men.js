@@ -1,7 +1,8 @@
 
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { CartContext } from './CartContext';
 import { useWishlist } from './WishlistContext';
+import SidebarFilter from './SidebarFilter';
 import './Producthome.css'; 
 import menimges1  from './menproductimages/menimage1.jpg';
 import menimges2  from './menproductimages/menimage2.jpg';
@@ -14,7 +15,6 @@ import menimges8  from './menproductimages/menimage8.jpg';
 import menimges9  from './menproductimages/menimage9.webp';
 import menimges10  from './menproductimages/men10.avif';
 
-
 const menProducts = [
   {
     id: 'm1',
@@ -26,6 +26,7 @@ const menProducts = [
     newPrice: '₹1,044',
     rating: '⭐⭐⭐⭐☆',
     ratingCount: 10200,
+    size: 'Medium'
   },
   {
     id: 'm2',
@@ -37,6 +38,7 @@ const menProducts = [
     newPrice: '₹1,144',
     rating: '⭐⭐⭐⭐☆',
     ratingCount: 10200,
+    size: 'Large'
   },
    {
     id: 'm3',
@@ -48,6 +50,7 @@ const menProducts = [
     newPrice: '₹1,224',
     rating: '⭐⭐⭐⭐☆',
     ratingCount: 10200,
+    size: 'Small'
   },
    {
     id: 'm4',
@@ -59,6 +62,7 @@ const menProducts = [
     newPrice: '₹1,144',
     rating: '⭐⭐⭐⭐☆',
     ratingCount: 10200,
+    size: 'Medium'
   },
    {
     id: 'm5',
@@ -70,6 +74,7 @@ const menProducts = [
     newPrice: '₹1,944',
     rating: '⭐⭐⭐⭐☆',
     ratingCount: 10200,
+    size: 'Large'
   },
    {
     id: 'm6',
@@ -81,6 +86,7 @@ const menProducts = [
     newPrice: '₹1,574',
     rating: '⭐⭐⭐⭐☆',
     ratingCount: 10200,
+    size: 'Small'
   },
    {
     id: 'm7',
@@ -92,6 +98,7 @@ const menProducts = [
     newPrice: '₹1,004',
     rating: '⭐⭐⭐⭐☆',
     ratingCount: 10200,
+    size: 'Medium'
   },
    {
     id: 'm8',
@@ -103,6 +110,7 @@ const menProducts = [
     newPrice: '₹1,044',
     rating: '⭐⭐⭐⭐☆',
     ratingCount: 10200,
+    size: 'Large'
   },
    {
     id: 'm9',
@@ -114,6 +122,7 @@ const menProducts = [
     newPrice: '₹1,224',
     rating: '⭐⭐⭐⭐☆',
     ratingCount: 10200,
+    size: 'Small'
   },
    
    {
@@ -126,13 +135,16 @@ const menProducts = [
     newPrice: '₹1,044',
     rating: '⭐⭐⭐⭐☆',
     ratingCount: 10200,
+    size: 'Medium'
   },
  
 ];
 
 const Men = () => {
-    const { addToCart } = useContext(CartContext);
-    const { addToWishlist, wishlistItems } = useWishlist();
+  const { addToCart } = useContext(CartContext);
+  const { addToWishlist, wishlistItems } = useWishlist();
+  const [showSidebar, setShowSidebar] = useState(false);
+  const [filteredProducts, setFilteredProducts] = useState(menProducts);
 
   const handleAdd = (product) => {
     addToCart(product);
@@ -143,46 +155,92 @@ const Men = () => {
     return wishlistItems.some(item => item.id === productId);
   };
 
+  const handleFilter = (filters) => {
+    // Implement filtering logic here based on filters object
+    let filtered = menProducts;
+    
+    // Filter by price
+    if (filters.price && filters.price !== 'all') {
+      const [min, max] = filters.price.split('-').map(Number);
+      filtered = filtered.filter(product => {
+        const price = parseInt(product.newPrice.replace(/[^\d]/g, ''));
+        return price >= min && price <= max;
+      });
+    }
+    
+    // Filter by sizes
+    if (filters.sizes && filters.sizes.length > 0) {
+      filtered = filtered.filter(product => 
+        filters.sizes.includes(product.size)
+      );
+    }
+    
+    setFilteredProducts(filtered);
+  };
+
+  const toggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+  };
+
   return (
-    <div className="products-cards">
-      {menProducts.map((product) => (
-        <div className="product-card" key={product.id} style={{ position: 'relative' }}>
-          <img src={product.imgSrc} alt={product.brand} className="product-image" />
-          <div
-            onClick={() => addToWishlist(product)}
-            style={{
-              position: 'absolute',
-              bottom: '8px',
-              right: '8px',
-              cursor: 'pointer',
-              fontSize: '24px',
-              color: isInWishlist(product.id) ? 'red' : 'gray',
-              userSelect: 'none',
-            }}
-            title={isInWishlist(product.id) ? 'Added to Wishlist' : 'Add to Wishlist'}
-          >
-            ♥
-          </div>
-          <div className="product-info">
-            <p className="tag">{product.tag}</p>
-            <h2 className="brand">{product.brand}</h2>
+    <div className="men-page-container">
+      {/* Filter button for mobile */}
+      <button className="filter-toggle-button" onClick={toggleSidebar}>
+        FILTERS
+      </button>
+      
+      <div className="page-layout">
+        {/* Main content area - 70% width */}
+        <div className="main-content" style={{ width: showSidebar ? '70%' : '100%' }}>
+          <div className="products-cards">
+            {filteredProducts.map((product) => (
+              <div className="product-card" key={product.id} style={{ position: 'relative' }}>
+                <img src={product.imgSrc} alt={product.brand} className="product-image" />
+                <div
+                  onClick={() => addToWishlist(product)}
+                  style={{
+                    position: 'absolute',
+                    bottom: '8px',
+                    right: '8px',
+                    cursor: 'pointer',
+                    fontSize: '24px',
+                    color: isInWishlist(product.id) ? 'red' : 'gray',
+                    userSelect: 'none',
+                  }}
+                  title={isInWishlist(product.id) ? 'Added to Wishlist' : 'Add to Wishlist'}
+                >
+                  ♥
+                </div>
+                <div className="product-info">
+                  <p className="tag">{product.tag}</p>
+                  <h2 className="brand">{product.brand}</h2>
 
-            <p className="price">
-              <span className="discount">{product.discount}</span>
-              <span className="old-price">{product.oldPrice}</span>
-              <span className="new-price">{product.newPrice}</span>
-            </p>
+                  <p className="price">
+                    <span className="discount">{product.discount}</span>
+                    <span className="old-price">{product.oldPrice}</span>
+                    <span className="new-price">{product.newPrice}</span>
+                  </p>
 
-            <div className="rating">
-              {product.rating} <span>({product.ratingCount.toLocaleString()})</span>
-            </div>
+                  <div className="rating">
+                    {product.rating} <span>({product.ratingCount.toLocaleString()})</span>
+                  </div>
 
-            <div className="buttons">
-               <button className="add-btn" onClick={() => handleAdd(product)}>Add to Cart</button>
-            </div>
+                  <div className="buttons">
+                     <button className="add-btn" onClick={() => handleAdd(product)}>Add to Cart</button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
+        
+        {/* Sidebar - 30% width */}
+        {showSidebar && (
+          <div className="sidebar-container" style={{ width: '30%' }}>
+            <SidebarFilter onFilter={handleFilter} />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

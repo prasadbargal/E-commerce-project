@@ -27,8 +27,7 @@ const Home = () => {
         home1, home2, home3, home4, home5, home6, home7, home8, home9, home10, home11, home12, home13
     ];
 
-const ImageGallery = () => {
-  const [centerIndex, setCenterIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(0);
 
     const prevSlide = () => {
         setCurrentIndex((prevIndex) =>

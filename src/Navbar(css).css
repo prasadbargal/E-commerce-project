@@ -5,6 +5,8 @@
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   padding: 12px 20px;
+  position: relative;
+  z-index: 3000; /* Added to ensure navbar and dropdowns are on top */
 }
 
 .navbar-brand span {
@@ -179,7 +181,7 @@
   background-color: #1a1a1a;
   border-radius: 4px;
   min-width: 160px;
-  z-index: 1000;
+  z-index: 2000; /* Increased z-index to bring dropdown in front */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
@@ -202,6 +204,68 @@
 /* Show dropdown on hover */
 .nav-item.dropdown:hover .dropdown-menu {
   display: block;
+}
+
+/* Multi-level dropdown submenu */
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-submenu-list {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  background-color: #1a1a1a;
+  min-width: 180px;
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  z-index: 2100;
+  padding: 10px 0;
+}
+
+.dropdown-submenu:hover .dropdown-submenu-list {
+  display: block;
+}
+
+.dropdown-submenu-title {
+  cursor: pointer;
+  padding: 8px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d4af37;
+  font-weight: 700;
+  position: relative;
+  white-space: nowrap;
+  font-size: 1.1rem;
+}
+
+.dropdown-submenu-title::after {
+  content: '▶';
+  position: absolute;
+  right: 15px;
+  font-size: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #d4af37;
+}
+
+.dropdown-submenu-list li {
+  padding: 0 20px;
+}
+
+.dropdown-submenu-list li .dropdown-item {
+  padding: 8px 0;
+  color: white;
+  display: block;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.dropdown-submenu-list li .dropdown-item:hover {
+  color: #ffd700;
+  background-color: transparent;
 }
 
 /* Sidebar toggle styles */

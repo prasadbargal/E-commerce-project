@@ -13,7 +13,7 @@ import boys from './images/boys.jpg';
 import girls from './images/girls.jpg';
 import home from './images/home.jpg';
 
-const categories = [
+export const categories = [
   { id: 'cat1', name: 'Men', img: men },
   { id: 'cat2', name: 'Men Footwear', img: menFootwear },
   { id: 'cat3', name: 'Men Accessories', img: menAccessories },
