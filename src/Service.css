@@ -1,0 +1,145 @@
+:root {
+  --primary-color: #1976d2;
+  --secondary-color: #00bfff;
+  --accent-color: #ff9800;
+  --text-color: #222;
+  --subtext-color: #555;
+  --white: #ffffff;
+  --bg-light: #e6f0f8;
+  --card-bg: #ffffff;
+  --hover-bg: linear-gradient(135deg, #1976d2, #00bfff);
+  --card-shadow: rgba(0, 0, 0, 0.08);
+  --transition: 0.3s ease-in-out;
+}
+
+body {
+  background-color: var(--bg-light);
+  font-family: 'Segoe UI', sans-serif;
+  color: var(--text-color);
+}
+
+.service-container {
+  padding: 60px 30px;
+  background-color: var(--bg-light);
+  text-align: center;
+}
+
+.service-title {
+  font-size: 36px;
+  color: var(--primary-color);
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.service-title::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background-color: var(--accent-color);
+  display: block;
+  margin: 12px auto 0;
+  border-radius: 50px;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.service-card {
+  background-color: var(--card-bg);
+  padding: 30px 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px var(--card-shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 300%;
+  height: 300%;
+  background: var(--hover-bg);
+  transform: rotate(45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+  z-index: 0;
+}
+
+.service-card:hover::before {
+  top: 0;
+  left: 0;
+  opacity: 0.1;
+}
+
+.service-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+}
+
+.service-icon {
+  font-size: 42px;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+  transition: transform 0.5s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.service-card:hover .service-icon {
+  transform: rotateY(360deg);
+}
+
+.service-heading {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+  z-index: 2;
+  position: relative;
+}
+
+.service-description {
+  font-size: 14px;
+  color: var(--subtext-color);
+  line-height: 1.6;
+  z-index: 2;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.service-card:hover .service-description {
+  color: var(--text-color);
+}
+
+/* Responsive: Stack cards on smaller screens */
+@media (max-width: 992px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-title {
+    font-size: 28px;
+  }
+
+  .service-icon {
+    font-size: 36px;
+  }
+
+  .service-heading {
+    font-size: 18px;
+  }
+}

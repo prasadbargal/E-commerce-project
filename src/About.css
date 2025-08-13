@@ -1,0 +1,115 @@
+:root {
+  --primary-color: #1976d2;
+  --secondary-color: #00bfff;
+  --text-dark: #333;
+  --text-light: #666;
+  --card-bg: #ffffff;
+  --bg-main: #eef6fb;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --transition: all 0.3s ease;
+}
+
+.about-container {
+  padding: 60px 30px;
+  background-color: var(--bg-main);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.about-hero {
+  margin-bottom: 50px;
+}
+
+.about-hero h1 {
+  font-size: 40px;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.about-hero h1::after {
+  content: '';
+  width: 70px;
+  height: 4px;
+  background-color: var(--secondary-color);
+  display: block;
+  margin: 10px auto 0;
+  border-radius: 2px;
+}
+
+.about-hero p {
+  font-size: 18px;
+  color: var(--text-light);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.about-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.about-box {
+  background-color: var(--card-bg);
+  padding: 35px 25px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px var(--shadow);
+  max-width: 340px;
+  min-width: 280px;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: var(--transition);
+}
+
+.about-box:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Subtle gradient shine on hover */
+.about-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(30, 144, 255, 0.1), transparent);
+  z-index: 0;
+  transition: left 0.5s ease;
+}
+
+.about-box:hover::before {
+  left: 100%;
+}
+
+.about-box h2 {
+  font-size: 22px;
+  color: var(--primary-color);
+  margin-bottom: 14px;
+  z-index: 2;
+  position: relative;
+}
+
+.about-box p {
+  font-size: 15px;
+  color: var(--text-dark);
+  line-height: 1.6;
+  z-index: 2;
+  position: relative;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-hero h1 {
+    font-size: 32px;
+  }
+
+  .about-box {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,33 @@
+const styles =
+  .order-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  .loading {
+    font-size: 18px;
+    color: #555;
+  }
+  .error {
+    color: red;
+  }
+  .order-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  .order-item {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  .order-item h2 {
+    margin: 0;
+    font-size: 20px;
+  }
+
+export default () => (
+  <>
+    <style>{styles}</style>
+    <Order/>
+  </>
+);
